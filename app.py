@@ -12,7 +12,7 @@ file_handler = RotatingFileHandler('app.log', maxBytes=5*1024*1024, backupCount=
 logger.addHandler(file_handler)
 
 # Setup OpenAI API key
-os.environ['OPENAI_API_KEY'] = os.getenv('OPENAI_API_KEY')
+os.environ['OPENAI_API_KEY'] =  st.secrets['OPENAI_API_KEY'] if 'OPENAI_API_KEY' in st.secrets else  os.getenv('OPENAI_API_KEY')
 client = OpenAI()
 
 # URL for top-center logo
